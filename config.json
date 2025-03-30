@@ -1,0 +1,17 @@
+{
+    "HUE_BRIDGE_IP": "192.168.1.215",
+    "API_URL": "https://api-web.nhle.com/v1",
+    "TEAM": "WSH",
+    "BOXSCORE_ENDPOINT": "/gamecenter",
+    "LIVE_DELAY": 0,
+    "GOAL_SOUND": "goal_horn.mp3",
+    "STARTUP_SOUND": "startup_sound.mp3",
+    "PREGAME_SOUND": "pregame_audio.mp3",
+    "nhl_api": {
+        "team": "WSH"
+    },
+    "horn": {
+        "enabled": true,
+        "color": "#ff0000"
+    }
+}

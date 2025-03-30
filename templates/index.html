@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Capitals Goal Siren</title>
+    <style>
+        body {
+            background-color: red; /* Red background */
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 2rem;
+        }
+        .logo {
+            max-width: 300px;
+            height: auto;
+        }
+        .section {
+            margin: 1.5rem 0;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+        .toggle-on {
+            background-color: #4CAF50; /* example green color for ON */
+            color: white;
+        }
+        .toggle-off {
+            background-color: #888; /* example grey color for OFF */
+            color: white;
+        }
+        .delay-input {
+            width: 4rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Capitals logo -->
+        <div class="section">
+            <!-- If you saved capitals_logo.png in static/ -->
+            <img src="{{ url_for('static', filename='capitals_logo.png') }}"
+                 alt="Capitals Logo"
+                 class="logo"/>
+        </div>
+
+        <!-- Toggle Siren On/Off -->
+        <div class="section">
+            <form method="POST">
+                {% if siren_on %}
+                <button type="submit" name="toggle_siren" class="btn toggle-on">Siren: ON</button>
+                {% else %}
+                <button type="submit" name="toggle_siren" class="btn toggle-off">Siren: OFF</button>
+                {% endif %}
+            </form>
+        </div>
+
+        <!-- Trigger Goal Siren Button -->
+        <div class="section">
+            <form action="{{ url_for('trigger_lights_goal') }}" method="POST">
+                <button type="submit" class="btn">Trigger Goal</button>
+            </form>
+        </div>
+
+        <!-- Delay Input -->
+        <div class="section">
+            <form method="POST">
+                <label for="delay_input">Delay (sec):</label>
+                <input class="delay-input"
+                       type="number"
+                       id="delay_input"
+                       name="delay_input"
+                       value="{{ goal_delay }}" />
+                <button type="submit" name="set_delay" class="btn">Set Delay</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
